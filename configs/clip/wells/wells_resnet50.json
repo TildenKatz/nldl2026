@@ -1,0 +1,35 @@
+{
+  "experiment_type": "clip_alignment",
+  "experiment_name": "wells_resnet50_clip_pretrain",
+  "encoder": {
+    "type": "resnet",
+    "variant": "resnet50"
+  },
+  "freeze_encoder": false,
+  "tabular_hidden_dim": 2048,
+  "tabular_output_dim": 2048,
+  "projection_dim": 128,
+  "projection_hidden_dim": 2048,
+  "temperature": 0.1,
+  "label_smoothing": 0.0,
+  "training": {
+    "batch_size": 512,
+    "max_epochs": 500,
+    "optimizer": {
+      "type": "adam",
+      "lr": 0.003,
+      "weight_decay": 0.0001
+    },
+    "scheduler": {
+      "type": "cosine",
+      "warmup_epochs": 10,
+      "warmup_start_factor": 0.01
+    },
+    "early_stopping_patience": 20,
+    "early_stopping_min_delta": 0.0,
+    "seed": 42
+  },
+  "data": {
+    "type": "wells"
+  }
+}

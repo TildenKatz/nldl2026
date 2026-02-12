@@ -1,0 +1,38 @@
+{
+  "experiment_type": "supervised",
+  "experiment_name": "dvm_clip_dino_unfrozen",
+  "data": {
+    "type": "dvm"
+  },
+  "model": {
+    "encoder": {
+      "type": "wandb",
+      "run_id": "<REDACTED>"
+    },
+    "head": {
+      "hidden_dim": null,
+      "bounded_outputs": false
+    },
+    "freeze_encoder": false
+  },
+  "training": {
+    "batch_size": 128,
+    "max_epochs": 100,
+    "optimizer": {
+      "type": "adamw",
+      "lr": 0.00005,
+      "weight_decay": 0.0001
+    },
+    "scheduler": {
+      "type": "cosine",
+      "warmup_epochs": 5,
+      "warmup_start_factor": 0.1
+    },
+    "early_stopping_patience": 15,
+    "early_stopping_min_delta": 0.0001,
+    "seed": 42
+  },
+  "loss": {
+    "type": "cross_entropy"
+  }
+}

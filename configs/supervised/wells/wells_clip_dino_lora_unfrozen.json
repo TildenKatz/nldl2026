@@ -1,0 +1,38 @@
+{
+  "experiment_type": "supervised",
+  "experiment_name": "wells_clip_dino_lora_unfrozen",
+  "data": {
+    "type": "wells"
+  },
+  "model": {
+    "encoder": {
+      "type": "wandb",
+      "run_id": "<REDACTED>"
+    },
+    "head": {
+      "hidden_dim": null,
+      "bounded_outputs": true
+    },
+    "freeze_encoder": false
+  },
+  "training": {
+    "batch_size": 64,
+    "max_epochs": 100,
+    "optimizer": {
+      "type": "adamw",
+      "lr": 0.00005,
+      "weight_decay": 0.0001
+    },
+    "scheduler": {
+      "type": "cosine",
+      "warmup_epochs": 5,
+      "warmup_start_factor": 0.1
+    },
+    "early_stopping_patience": 15,
+    "early_stopping_min_delta": 0.0001,
+    "seed": 42
+  },
+  "loss": {
+    "type": "mse"
+  }
+}

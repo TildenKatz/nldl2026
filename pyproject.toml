@@ -1,0 +1,84 @@
+[project]
+name = "nldl-winter-school"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "lasio>=0.32",
+    "laspy>=2.7.0",
+    "lightning>=2.6.0",
+    "matplotlib>=3.10.8",
+    "numpy>=2.4.1",
+    "pillow>=12.1.0",
+    "polars>=1.37.1",
+    "pyarrow==22.0.0",
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.12.0",
+    "python-dotenv>=1.2.1",
+    "rawpy>=0.25.1",
+    "scikit-learn>=1.8.0",
+    "seaborn>=0.13.2",
+    "termcolor>=3.3.0",
+    "torch>=2.9.1",
+    "torchvision>=0.22.1",
+    "tqdm>=4.67.1",
+    "vizy>=1.4.0",
+    "wandb>=0.24.0",
+    "webdataset>=1.0.2",
+]
+
+[project.scripts]
+train = "src.train:main"
+validate = "src.validate:main"
+
+[dependency-groups]
+dev = [
+    "altair>=6.0.0",
+    "ipykernel>=7.1.0",
+    "ipywidgets>=8.1.8",
+    "jupyter>=1.1.1",
+    "plotly>=6.5.2",
+    "pyright>=1.1.408",
+    "pytest>=9.0.2",
+    "ruff>=0.15.0",
+]
+
+[tool.ruff]
+exclude = ["notebooks"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "D",       # docs rules
+    "SIM108",  # use-ternary-operator
+    "TRY003",  # raise exception arcs
+    "EM",      # exception message formatting
+    "INP001",  # implicit-namespace-package
+    "TC",      # type-checking imports
+    "T201",    # print statements
+    "ERA001",  # commented code
+    "PGH003",  # blanket type ignore
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]  # allow asserts in tests
+
+[tool.ruff.lint.pylint]
+max-args = 12
+
+[tool.ruff.lint.pep8-naming]
+ignore-names = [
+    "F",  # torch.nn.functional
+    "L", # lightning
+    ]
+
+[tool.pyright]
+reportPrivateImportUsage = false
+
+[build-system]
+requires = ["uv_build>=0.9.26,<0.10.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "src"
+module-root = ""

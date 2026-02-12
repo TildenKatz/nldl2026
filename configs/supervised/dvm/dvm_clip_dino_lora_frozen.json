@@ -1,0 +1,34 @@
+{
+  "experiment_type": "supervised",
+  "experiment_name": "dvm_clip_dino_lora_frozen",
+  "data": {
+    "type": "dvm"
+  },
+  "model": {
+    "encoder": {
+      "type": "wandb",
+      "run_id": "<REDACTED>"
+    },
+    "head": {
+      "hidden_dim": null,
+      "bounded_outputs": false
+    },
+    "freeze_encoder": true
+  },
+  "training": {
+    "batch_size": 128,
+    "max_epochs": 100,
+    "optimizer": {
+      "type": "adamw",
+      "lr": 0.001,
+      "weight_decay": 0.0
+    },
+    "scheduler": null,
+    "early_stopping_patience": 15,
+    "early_stopping_min_delta": 0.0001,
+    "seed": 42
+  },
+  "loss": {
+    "type": "cross_entropy"
+  }
+}
